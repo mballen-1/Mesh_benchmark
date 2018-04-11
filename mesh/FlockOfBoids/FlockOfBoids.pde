@@ -70,7 +70,7 @@ void setup() {
   }
   else{
     for (int i = 0; i < initBoidNum; i++)
-      
+        new Boid()
       //flock.add(new Boid());
   }
   

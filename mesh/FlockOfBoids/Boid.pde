@@ -11,6 +11,7 @@ class Boid {
   float sc = 4; // scale factor for the render of the boid
   float flap = 0;
   float t = 0;
+  int representationMode = 0;
 
   Boid(Vector inPos) {
     grabsMouseColor = color(0, 0, 255);
