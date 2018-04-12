@@ -3,6 +3,7 @@ public class Face{
   Vector v1;
   Vector v2;
   Vector v3;
+  PShape shape = createShape();
 
   public Vector getV1() {
     return v1;
@@ -29,7 +30,6 @@ public class Face{
   }
 
   public Face(Vector v1, Vector v2, Vector v3) {
-
     this.v1 = v1;
     this.v2 = v2;
     this.v3 = v3;
@@ -37,18 +37,19 @@ public class Face{
 
   public void renderFaceImmediate(){
     beginShape(TRIANGLE_STRIP);
-      vertex(v1.x(),v1.y(),v1.z);
-      vertex(v1.x(),v1.y(),v1.z);
-      vertex(v1.x(),v1.y(),v1.z);
+      vertex(v1.x(),v1.y(),v1.z());
+      vertex(v2.x(),v2.y(),v2.z());
+      vertex(v3.x(),v3.y(),v3.z());
     endShape();
   }
 
   public void renderFaceRetained(){
-    Shape shape = createShape();
-      s.vertex(v1.x(),v1.y(),v1.z);
-      s.vertex(v1.x(),v1.y(),v1.z);
-      s.vertex(v1.x(),v1.y(),v1.z);
-    s.endShape();
+    
+    shape.beginShape();
+      shape.vertex(v1.x(),v1.y(),v1.z());
+      shape.vertex(v2.x(),v2.y(),v2.z());
+      shape.vertex(v3.x(),v3.y(),v3.z());
+    shape.endShape();
   }
 
 }

@@ -28,14 +28,18 @@ public class FaceVertex{
     }
 
     void renderMesh(String mode){
-        if(mode == 'Immediate')
+        if(mode == "Immediate"){
             for(Face face : faceList) {
                 face.renderFaceImmediate();
             }
+        }
         else{
-            for(Face face : faceList) {
-                face.renderFaceRetained();
-            }
+            if(mode == ("x")){
+              System.out.println("xd");  
+              for(Face face : faceList) {
+                  face.renderFaceRetained();
+                }            
+          }
         }
     }
 }

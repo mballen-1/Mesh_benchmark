@@ -70,8 +70,10 @@ void setup() {
       flock.add(new Boid(new Vector(flockWidth / 2, flockHeight / 2, flockDepth / 2)));
   }
   else{
-    for (int i = 0; i < initBoidNum; i++)
-        new Boid()
+    for (int i = 0; i < initBoidNum; i++){
+    
+    }
+        //new Boid()
       //flock.add(new Boid());
   }
   

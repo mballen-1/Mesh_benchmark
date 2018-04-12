@@ -14,6 +14,11 @@ class Boid {
   int renderMode = 0;
 // 0 retained
 // 1 immediate
+  List<Face> faceList = new ArrayList<Face>(); //list face-vertex face
+  List<Vector> vertexList = new ArrayList<Vector>(); //list face-vertex face
+  Face f1,f2,f3,f4; // tetrahedron faces
+  FaceVertex faceVertexMesh; 
+  Vector a1, a2, a3, a4;// tetrahedron vertex
 
   Boid(Vector inPos) {
     grabsMouseColor = color(0, 0, 255);
@@ -186,25 +191,61 @@ class Boid {
       fill(avatarColor);
     }
 
+    //draw immediate - face-vertex
+    initializeMeshValues();
+    faceVertexMesh = new FaceVertex(faceList, vertexList);
+    faceVertexMesh.renderMesh("x");
+
+    /*
     //draw boid
     beginShape(kind);
-    vertex(3 * sc, 0, 0);
-    vertex(-3 * sc, 2 * sc, 0);
-    vertex(-3 * sc, -2 * sc, 0);
+    vertex(3 * sc, 0, 0); //a1
+    vertex(-3 * sc, 2 * sc, 0); //a2
+    vertex(-3 * sc, -2 * sc, 0); // a3
 
-    vertex(3 * sc, 0, 0);
-    vertex(-3 * sc, 2 * sc, 0);
-    vertex(-3 * sc, 0, 2 * sc);
+    vertex(3 * sc, 0, 0);//a1
+    vertex(-3 * sc, 2 * sc, 0); //a2
+    vertex(-3 * sc, 0, 2 * sc); //a4
 
-    vertex(3 * sc, 0, 0);
-    vertex(-3 * sc, 0, 2 * sc);
-    vertex(-3 * sc, -2 * sc, 0);
+    vertex(3 * sc, 0, 0); //a1
+    vertex(-3 * sc, 0, 2 * sc);// a4
+    vertex(-3 * sc, -2 * sc, 0); // a3
 
-    vertex(-3 * sc, 0, 2 * sc);
-    vertex(-3 * sc, 2 * sc, 0);
-    vertex(-3 * sc, -2 * sc, 0);
+    vertex(-3 * sc, 0, 2 * sc); // a4
+    vertex(-3 * sc, 2 * sc, 0); // a2
+    vertex(-3 * sc, -2 * sc, 0); // a3
     endShape();
 
     popStyle();
+    */
   }
+
+  void initializeMeshValues(){
+
+      a1 = new Vector(3 * sc, 0, 0);
+      a2 = new Vector(-3 * sc, 2 * sc, 0);
+      a3 = new Vector(-3 * sc, -2 * sc, 0);
+      a4 = new Vector(-3 * sc, 0, 2 * sc);
+      addVertexesToList();
+
+      f1 = new Face(a1, a2, a3);
+      f2 = new Face(a1, a2, a4);
+      f3 = new Face(a1, a4, a3);
+      f4 = new Face(a4, a2, a3);
+      addFacesToList();
+  }
+
+  void addFacesToList(){
+      faceList.add(f1);
+      faceList.add(f2);
+      faceList.add(f3);
+      faceList.add(f4);
+  }
+
+   void addVertexesToList(){
+      vertexList.add(a1);
+      vertexList.add(a2);
+      vertexList.add(a3);
+      vertexList.add(a4);
+   }
 }
