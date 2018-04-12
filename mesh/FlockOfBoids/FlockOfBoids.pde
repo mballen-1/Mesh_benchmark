@@ -34,9 +34,10 @@ int flockHeight = 720;
 int flockDepth = 600;
 boolean avoidWalls = true;
 int representation = 0;
-
 //0 vertex-vertex
 //1 Face - vertex
+
+
 
 
 // visual modes

@@ -26,4 +26,16 @@ public class FaceVertex{
         this.faceList = faceList;
         this.vertexList = vertexList;
     }
+
+    void renderMesh(String mode){
+        if(mode == 'Immediate')
+            for(Face face : faceList) {
+                face.renderFaceImmediate();
+            }
+        else{
+            for(Face face : faceList) {
+                face.renderFaceRetained();
+            }
+        }
+    }
 }
