@@ -1,4 +1,4 @@
-class Boid {
+class Boid extends FlockOfBoids{
   Node node;
   int grabsMouseColor;
   int avatarColor;
@@ -11,14 +11,6 @@ class Boid {
   float sc = 4; // scale factor for the render of the boid
   float flap = 0;
   float t = 0;
-  int renderMode = 0;
-// 0 retained
-// 1 immediate
-  List<Face> faceList = new ArrayList<Face>(); //list face-vertex face
-  List<Vector> vertexList = new ArrayList<Vector>(); //list face-vertex face
-  Face f1,f2,f3,f4; // tetrahedron faces
-  FaceVertex faceVertexMesh; 
-  Vector a1, a2, a3, a4;// tetrahedron vertex
 
   Boid(Vector inPos) {
     grabsMouseColor = color(0, 0, 255);
@@ -155,7 +147,6 @@ class Boid {
 
   void render() {
     pushStyle();
-
     // uncomment to draw boid axes
     //scene.drawAxes(10);
 
@@ -163,7 +154,6 @@ class Boid {
     strokeWeight(2);
     stroke(color(0, 255, 0));
     fill(color(255, 0, 0, 125));
-
     // visual modes
     switch(mode) {
     case 1:
@@ -191,11 +181,7 @@ class Boid {
       fill(avatarColor);
     }
 
-    //draw immediate - face-vertex
-    initializeMeshValues();
-    faceVertexMesh = new FaceVertex(faceList, vertexList);
-    faceVertexMesh.renderMesh("x");
-
+    readRepresentationAnRenderMode();
     /*
     //draw boid
     beginShape(kind);
@@ -219,6 +205,22 @@ class Boid {
     popStyle();
     */
   }
+
+  public void readRepresentationAnRenderMode(){
+    if( this.representation == "Face-Vertex"){
+      //draw immediate - face-vertex
+      initializeMeshValues();
+      faceVertexMesh = new FaceVertex(faceList, vertexList);
+      if(this.renderMode == "Immediate")
+      {
+        faceVertexMesh.renderMesh("Immediate");
+      }
+      else{
+        faceVertexMesh.renderMesh("Retained");
+      }
+    }
+  }
+
 
   void initializeMeshValues(){
 

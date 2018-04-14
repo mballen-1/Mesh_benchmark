@@ -34,12 +34,9 @@ public class FaceVertex{
             }
         }
         else{
-            if(mode == ("x")){
-              System.out.println("xd");  
-              for(Face face : faceList) {
-                  face.renderFaceRetained();
-                }            
-          }
+            for(Face face : faceList) {
+                face.renderFaceRetained();
+            }
         }
     }
 }
