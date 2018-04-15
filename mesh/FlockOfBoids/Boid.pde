@@ -238,13 +238,14 @@ class Boid{
       
         faceVertexMesh = new FaceVertex(faceList, vertexList);        
         if(this.renderMode == 1){
-          this.shapeBoid=faceVertexMesh.renderMesh2();
+          this.shapeBoid=faceVertexMesh.renderMeshRetained();
           
         }
         else{
-          faceVertexMesh.renderMesh();
+          faceVertexMesh.renderMeshImmediate();
+          faceVertexMesh = null;
         }
-        faceVertexMesh= null;
+
       break;
       
       case 1: //vertex-vertex
@@ -252,11 +253,11 @@ class Boid{
         VertexVertex vertexVertexMesh = new VertexVertex(vertexList);
         if(this.renderMode == 0){
           vertexVertexMesh.renderMesh("Immediate");
+          vertexVertexMesh = null;
         }
         else{
-          this.shapeBoid=vertexVertexMesh.renderMesh("Retained");          
+          this.shapeBoid = vertexVertexMesh.renderMesh("Retained");
       }
-      vertexVertexMesh = null;  
       break;    
       
     }

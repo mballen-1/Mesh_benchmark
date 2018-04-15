@@ -39,7 +39,7 @@ boolean vertexVertexRepresentation =  true;
 //0 face-vertex
 //1 vertex-vertex
 
-int renderMode = 1;
+int renderMode = 0;
 // 0 Immediate
 // 1 Retained
 
@@ -73,7 +73,7 @@ void setup() {
   //shape = createShape();
   System.out.println("RenderMode: [0] Immediate, [1] retained : \n" + renderMode);
   System.out.println("Representation: [false] Face-vertex, [true] Vertex-vertex : \n" + (vertexVertexRepresentation));
- createFlock(vertexVertexRepresentation);
+  createFlock(vertexVertexRepresentation);
   System.gc(); 
 }
 
@@ -84,7 +84,6 @@ void draw() {
   walls();
   // Calls Node.visit() on all scene nodes.
   scene.traverse();
-  //shape(shape);
 }
 
 void walls() {
@@ -155,9 +154,6 @@ void createFlock(boolean vertexVertexRepresentation){
     else{//retained
         for (int i = 0; i < initBoidNum; i++){          
             flock.add(new Boid(new Vector(flockWidth / 2, flockHeight / 2, flockDepth / 2), int(vertexVertexRepresentation), 1));
-            //print(flock.get(i).shape);
-          //  return flock.get(i).shape;
         }  
       }
-      //return shape;
 }
