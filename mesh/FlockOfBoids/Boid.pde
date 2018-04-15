@@ -232,12 +232,12 @@ class Boid{
         }
       break;
       case 1: //vertex-vertex
-        //vertexVertexMesh = new VertexVertex(faceList, vertexList);
+        vertexVertexMesh = new VertexVertex(vertexList);
         if(this.renderMode == 0){
-          //faceVertexMesh.renderMesh("Immediate");
+          vertexVertexMesh.renderMesh("Immediate");
         }
         else{
-          //faceVertexMesh.renderMesh("Retained");
+          vertexVertexMesh.renderMesh("Retained");
         }
       break; 
       

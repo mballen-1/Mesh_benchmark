@@ -54,7 +54,7 @@ FaceVertex faceVertexMesh;
 // 3. Only points
 int mode;
 
-int initBoidNum = 900; // amount of boids to start the program with
+int initBoidNum = 100; // amount of boids to start the program with
 ArrayList<Boid> flock;
 Node avatar;
 boolean animate = true;
@@ -80,7 +80,7 @@ void setup() {
   }
   else{
     for (int i = 0; i < initBoidNum; i++){
-        //flock.add(new Boid(new Vector(flockWidth/2,flockHeight/2,flockDepth/2)));
+        flock.add(new Boid(new Vector(flockWidth/2,flockHeight/2,flockDepth/2), 1, 0));
     }
   }
   
