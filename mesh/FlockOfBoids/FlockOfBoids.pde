@@ -27,6 +27,7 @@ import frames.input.event.*;
 import frames.primitives.*;
 import frames.core.*;
 import frames.processing.*;
+import java.util.Scanner;
 
 Scene scene;
 int flockWidth = 1280;
@@ -34,7 +35,7 @@ int flockHeight = 720;
 int flockDepth = 600;
 boolean avoidWalls = true;
 
-boolean faceVertexRepresentation = true;
+boolean faceVertexRepresentation =  true;
 //0 face-vertex
 //1 vertex-vertex
 
@@ -42,11 +43,7 @@ int renderMode = 1;
 // 0 Immediate
 // 1 Retained
 
-FaceVertex faceVertexMesh;
-
-
-//VertexVertex vertexVertexMesh;//todo
-
+PShape shape;
 // visual modes
 // 0. Faces and edges
 // 1. Wireframe (only edges)
@@ -73,20 +70,11 @@ void setup() {
   scene.fitBall();
   // create and fill the list of boids
   flock = new ArrayList();
-  
-  if(faceVertexRepresentation){
-    for (int i = 0; i < initBoidNum; i++)
-      flock.add(new Boid(new Vector(flockWidth / 2, flockHeight / 2, flockDepth / 2), 0, 0));
-  }
-  else{
-    for (int i = 0; i < initBoidNum; i++){
-        flock.add(new Boid(new Vector(flockWidth/2,flockHeight/2,flockDepth/2), 1, 0));
-    }
-    System.gc();
-    System.out.println(Runtime.getRuntime().totalMemory());
-  }
-  
-  
+  shape = createShape();
+  inputRenderMode();
+  inputRepresentationMode();
+  createFlock(faceVertexRepresentation);            
+  System.gc(); 
 }
 
 void draw() {
@@ -154,4 +142,36 @@ void keyPressed() {
     }
     break;
   }
+}
+
+
+void createFlock(boolean faceVertexRepresentation){
+    if(renderMode == 0)//immediate
+        for (int i = 0; i < initBoidNum; i++)
+            flock.add(new Boid(new Vector(flockWidth / 2, flockHeight / 2, flockDepth / 2), int(faceVertexRepresentation), 0, shape));
+    else{//retained
+        for (int i = 0; i < initBoidNum; i++)
+            flock.add(new Boid(new Vector(flockWidth / 2, flockHeight / 2, flockDepth / 2), int(faceVertexRepresentation), 1, shape));
+        }
+}
+
+void inputRenderMode(){
+
+    Scanner reader = new Scanner(System.in);
+    System.out.prinln("Immediate 0, Retained 1");
+    int render_mode_input = reader.nextInt();
+    if(render_mode_input == 1){
+        renderMode = render_mode_input;
+    }
+    reader = null;
+}
+
+void inputRepresentationMode(){
+    Scanner reader = new Scanner(System.in);
+    System.out.prinln("Face-vertex 0, vertex-vertex 1");
+    int representation_input = reader.nextInt();
+    if(representation_input == 1){
+        faceVertexRepresentation = false;
+    }
+    reader = null;
 }

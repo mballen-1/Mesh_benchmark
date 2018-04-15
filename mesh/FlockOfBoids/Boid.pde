@@ -19,11 +19,16 @@ class Boid{
   
   Face f1,f2,f3,f4; // tetrahedron faces
   Vector a1, a2, a3, a4;// tetrahedron vertices
+  
+  VertexVertex vertexVertexMesh;
+  FaceVertex faceVertexMesh;
+  PShape shape;
 
-  Boid(Vector inPos, int representation, int renderMode) {
+  Boid(Vector inPos, int representation, int renderMode, PShape shape) {
     
     this.representation = representation;
     this.renderMode = renderMode;
+    this.shape = shape;
     
     grabsMouseColor = color(0, 0, 255);
     avatarColor = color(255, 255, 0);
@@ -196,6 +201,7 @@ class Boid{
 
     initializeMeshValues();
     createMeshAndRender();
+    setNullUnnecesaryReferences();
     /*
     //draw boid
     beginShape(kind);
@@ -224,12 +230,14 @@ class Boid{
     switch(this.representation){
       case 0://Face vertex
         faceVertexMesh = new FaceVertex(faceList, vertexList);
+        
         if(this.renderMode == 0){
           faceVertexMesh.renderMesh("Immediate");
         }
         else{
           faceVertexMesh.renderMesh("Retained");
         }
+        faceVertexMesh= null;
       break;
       case 1: //vertex-vertex
         VertexVertex vertexVertexMesh = new VertexVertex(vertexList);
@@ -237,14 +245,36 @@ class Boid{
           vertexVertexMesh.renderMesh("Immediate");
         }
         else{
-          vertexVertexMesh.renderMesh("Retained");
-        }
-      break; 
+          vertexVertexMesh.renderMesh("Retained");          
+      }
+      vertexVertexMesh = null;  
+      break;    
       
-      
-    } 
+    }
+    
   }
 
+  void setListsToNull(){
+    faceList = null;
+    vertexList = null;
+  }
+  void setFacesToNull(){
+    f1 = null;
+    f2 = null;
+    f3 = null;
+    f4 = null;
+   }
+   void setVertexToNull(){
+     a1 = null;
+     a2 = null;
+     a3 = null;
+     a4 = null;
+   }
+  void setNullUnnecesaryReferences(){
+    //setListsToNull();
+    setFacesToNull();
+    setVertexToNull();
+  }
 
   void initializeMeshValues(){
 
@@ -269,9 +299,9 @@ class Boid{
   }
 
    void addVertexesToList(){
-      this.vertexList.add(a1);
-      this.vertexList.add(a2);
-      this.vertexList.add(a3);
-      this.vertexList.add(a4);
+      vertexList.add(a1);
+      vertexList.add(a2);
+      vertexList.add(a3);
+      vertexList.add(a4);
    }
 }
