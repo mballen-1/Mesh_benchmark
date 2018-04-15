@@ -232,7 +232,7 @@ class Boid{
         }
       break;
       case 1: //vertex-vertex
-        vertexVertexMesh = new VertexVertex(vertexList);
+        VertexVertex vertexVertexMesh = new VertexVertex(vertexList);
         if(this.renderMode == 0){
           vertexVertexMesh.renderMesh("Immediate");
         }
