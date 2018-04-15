@@ -32,11 +32,15 @@ public class FaceVertex{
             for(Face face : faceList) {
                 face.renderFaceImmediate();
             }
+           
         }
         else{
             for(Face face : faceList) {
                 face.renderFaceRetained();
             }
         }
+        faceList = null;
+        vertexList = null;
+        //System.gc();
     }
 }

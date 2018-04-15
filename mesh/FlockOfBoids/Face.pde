@@ -43,7 +43,7 @@ public class Face{
       vertex(v2.x(),v2.y(),v2.z());
       vertex(v3.x(),v3.y(),v3.z());
     endShape();
-    System.out.println(Runtime.getRuntime().totalMemory());
+    //System.out.println(Runtime.getRuntime().totalMemory());
   }
 
   public void renderFaceRetained(){

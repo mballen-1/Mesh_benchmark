@@ -38,7 +38,7 @@ boolean faceVertexRepresentation = true;
 //0 face-vertex
 //1 vertex-vertex
 
-int renderMode = 0;
+int renderMode = 1;
 // 0 Immediate
 // 1 Retained
 
@@ -82,6 +82,8 @@ void setup() {
     for (int i = 0; i < initBoidNum; i++){
         flock.add(new Boid(new Vector(flockWidth/2,flockHeight/2,flockDepth/2), 1, 0));
     }
+    System.gc();
+    System.out.println(Runtime.getRuntime().totalMemory());
   }
   
   
@@ -138,6 +140,8 @@ void keyPressed() {
     break;
   case 'r':
     faceVertexRepresentation = !faceVertexRepresentation;
+    System.out.println("faceVertexRepresentation:" + faceVertexRepresentation);
+    
     break;    
   case ' ':
     if (scene.eye().reference() != null) {
