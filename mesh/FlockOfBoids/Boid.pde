@@ -228,9 +228,10 @@ class Boid{
 
   public void createMeshAndRender(){
     switch(this.representation){
+      
       case 0://Face vertex
-        faceVertexMesh = new FaceVertex(faceList, vertexList);
-        
+      
+        faceVertexMesh = new FaceVertex(faceList, vertexList);        
         if(this.renderMode == 0){
           faceVertexMesh.renderMesh("Immediate");
         }
@@ -239,7 +240,9 @@ class Boid{
         }
         faceVertexMesh= null;
       break;
+      
       case 1: //vertex-vertex
+      
         VertexVertex vertexVertexMesh = new VertexVertex(vertexList);
         if(this.renderMode == 0){
           vertexVertexMesh.renderMesh("Immediate");

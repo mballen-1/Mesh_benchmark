@@ -35,11 +35,11 @@ int flockHeight = 720;
 int flockDepth = 600;
 boolean avoidWalls = true;
 
-boolean faceVertexRepresentation =  true;
+boolean vertexVertexRepresentation =  true;
 //0 face-vertex
 //1 vertex-vertex
 
-int renderMode = 1;
+int renderMode = 0;
 // 0 Immediate
 // 1 Retained
 
@@ -71,9 +71,9 @@ void setup() {
   // create and fill the list of boids
   flock = new ArrayList();
   shape = createShape();
-  inputRenderMode();
-  inputRepresentationMode();
-  createFlock(faceVertexRepresentation);            
+  //inputRenderMode();
+  //inputRepresentationMode();
+  createFlock(vertexVertexRepresentation);            
   System.gc(); 
 }
 
@@ -127,8 +127,8 @@ void keyPressed() {
     mode = mode < 3 ? mode+1 : 0;
     break;
   case 'r':
-    faceVertexRepresentation = !faceVertexRepresentation;
-    System.out.println("faceVertexRepresentation:" + faceVertexRepresentation);
+    vertexVertexRepresentation = !vertexVertexRepresentation;
+    System.out.println("vertexVertexRepresentation:" + vertexVertexRepresentation);
     
     break;    
   case ' ':
@@ -145,33 +145,15 @@ void keyPressed() {
 }
 
 
-void createFlock(boolean faceVertexRepresentation){
-    if(renderMode == 0)//immediate
-        for (int i = 0; i < initBoidNum; i++)
-            flock.add(new Boid(new Vector(flockWidth / 2, flockHeight / 2, flockDepth / 2), int(faceVertexRepresentation), 0, shape));
-    else{//retained
-        for (int i = 0; i < initBoidNum; i++)
-            flock.add(new Boid(new Vector(flockWidth / 2, flockHeight / 2, flockDepth / 2), int(faceVertexRepresentation), 1, shape));
+void createFlock(boolean vertexVertexRepresentation){
+    if(renderMode == 0){//immediate
+        for (int i = 0; i < initBoidNum; i++){
+            flock.add(new Boid(new Vector(flockWidth / 2, flockHeight / 2, flockDepth / 2), int(vertexVertexRepresentation), 0, shape));
         }
-}
-
-void inputRenderMode(){
-
-    Scanner reader = new Scanner(System.in);
-    System.out.prinln("Immediate 0, Retained 1");
-    int render_mode_input = reader.nextInt();
-    if(render_mode_input == 1){
-        renderMode = render_mode_input;
     }
-    reader = null;
-}
-
-void inputRepresentationMode(){
-    Scanner reader = new Scanner(System.in);
-    System.out.prinln("Face-vertex 0, vertex-vertex 1");
-    int representation_input = reader.nextInt();
-    if(representation_input == 1){
-        faceVertexRepresentation = false;
-    }
-    reader = null;
+    else{//retained
+        for (int i = 0; i < initBoidNum; i++){
+            flock.add(new Boid(new Vector(flockWidth / 2, flockHeight / 2, flockDepth / 2), int(vertexVertexRepresentation), 1, shape));
+        }  
+      }
 }

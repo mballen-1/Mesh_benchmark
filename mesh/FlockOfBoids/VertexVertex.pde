@@ -9,17 +9,25 @@ public class VertexVertex{
         if(renderMode == "Immediate"){
             beginShape(TRIANGLE_STRIP);
                 vertex(vertexList.get(0).x(), vertexList.get(0).y(), vertexList.get(0).z());
-                vertex(vertexList.get(1).x(), vertexList.get(0).y(), vertexList.get(0).z());
-                vertex(vertexList.get(2).x(), vertexList.get(0).y(), vertexList.get(0).z());
+                vertex(vertexList.get(1).x(), vertexList.get(1).y(), vertexList.get(1).z());
+                vertex(vertexList.get(2).x(), vertexList.get(2).y(), vertexList.get(2).z());
+            endShape();
+            beginShape(TRIANGLE_STRIP);
                 vertex(vertexList.get(0).x(), vertexList.get(0).y(), vertexList.get(0).z());
-                vertex(vertexList.get(1).x(), vertexList.get(0).y(), vertexList.get(0).z());
-                vertex(vertexList.get(3).x(), vertexList.get(0).y(), vertexList.get(0).z());
+                vertex(vertexList.get(1).x(), vertexList.get(1).y(), vertexList.get(1).z());
+                vertex(vertexList.get(3).x(), vertexList.get(3).y(), vertexList.get(3).z());
+            endShape();
+            beginShape(TRIANGLE_STRIP);
                 vertex(vertexList.get(0).x(), vertexList.get(0).y(), vertexList.get(0).z());
-                vertex(vertexList.get(3).x(), vertexList.get(0).y(), vertexList.get(0).z());
-                vertex(vertexList.get(2).x(), vertexList.get(0).y(), vertexList.get(0).z());
-                vertex(vertexList.get(3).x(), vertexList.get(0).y(), vertexList.get(0).z());
-                vertex(vertexList.get(1).x(), vertexList.get(0).y(), vertexList.get(0).z());
-                vertex(vertexList.get(2).x(), vertexList.get(0).y(), vertexList.get(0).z());
+                vertex(vertexList.get(3).x(), vertexList.get(3).y(), vertexList.get(3).z());
+                vertex(vertexList.get(2).x(), vertexList.get(2).y(), vertexList.get(2).z());
+            endShape();
+            beginShape(TRIANGLE_STRIP);
+                vertex(vertexList.get(3).x(), vertexList.get(3).y(), vertexList.get(3).z());
+                vertex(vertexList.get(1).x(), vertexList.get(1).y(), vertexList.get(1).z());
+                vertex(vertexList.get(2).x(), vertexList.get(2).y(), vertexList.get(2).z());
+            endShape();
+                //System.out.println("immediate vertex vertex");
             endShape();
         }
         else {
@@ -37,6 +45,7 @@ public class VertexVertex{
                     vertex(vertexList.get(3).x(), vertexList.get(0).y(), vertexList.get(0).z());
                     vertex(vertexList.get(1).x(), vertexList.get(0).y(), vertexList.get(0).z());
                     vertex(vertexList.get(2).x(), vertexList.get(0).y(), vertexList.get(0).z());
+                    System.out.println("retained vertex vertex");
                 endShape();
             }
         }
