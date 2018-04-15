@@ -35,7 +35,7 @@ int flockHeight = 720;
 int flockDepth = 600;
 boolean avoidWalls = true;
 
-boolean vertexVertexRepresentation =  false;
+boolean vertexVertexRepresentation =  true;
 //0 face-vertex
 //1 vertex-vertex
 
@@ -43,7 +43,7 @@ int renderMode = 1;
 // 0 Immediate
 // 1 Retained
 
-PShape shape;
+//PShape shape;
 // visual modes
 // 0. Faces and edges
 // 1. Wireframe (only edges)
@@ -51,7 +51,7 @@ PShape shape;
 // 3. Only points
 int mode;
 
-int initBoidNum = 100; // amount of boids to start the program with
+int initBoidNum = 50; // amount of boids to start the program with
 ArrayList<Boid> flock;
 Node avatar;
 boolean animate = true;
@@ -70,10 +70,10 @@ void setup() {
   scene.fitBall();
   // create and fill the list of boids
   flock = new ArrayList();
-  shape = createShape();
+  //shape = createShape();
   System.out.println("RenderMode: [0] Immediate, [1] retained : \n" + renderMode);
   System.out.println("Representation: [false] Face-vertex, [true] Vertex-vertex : \n" + (vertexVertexRepresentation));
-  createFlock(vertexVertexRepresentation);
+ createFlock(vertexVertexRepresentation);
   System.gc(); 
 }
 
@@ -149,12 +149,15 @@ void keyPressed() {
 void createFlock(boolean vertexVertexRepresentation){
     if(renderMode == 0){//immediate
         for (int i = 0; i < initBoidNum; i++){
-            flock.add(new Boid(new Vector(flockWidth / 2, flockHeight / 2, flockDepth / 2), int(vertexVertexRepresentation), 0, shape));
+            flock.add(new Boid(new Vector(flockWidth / 2, flockHeight / 2, flockDepth / 2), int(vertexVertexRepresentation), 0));
         }
     }
     else{//retained
         for (int i = 0; i < initBoidNum; i++){          
-            flock.add(new Boid(new Vector(flockWidth / 2, flockHeight / 2, flockDepth / 2), int(vertexVertexRepresentation), 1, shape));
+            flock.add(new Boid(new Vector(flockWidth / 2, flockHeight / 2, flockDepth / 2), int(vertexVertexRepresentation), 1));
+            //print(flock.get(i).shape);
+          //  return flock.get(i).shape;
         }  
       }
+      //return shape;
 }

@@ -22,13 +22,13 @@ class Boid{
   
   VertexVertex vertexVertexMesh;
   FaceVertex faceVertexMesh;
-  PShape shape;
+  PShape shapeBoid;
 
-  Boid(Vector inPos, int representation, int renderMode, PShape shape) {
+  Boid(Vector inPos, int representation, int renderMode) {
     
     this.representation = representation;
     this.renderMode = renderMode;
-    this.shape = shape;
+    //this.shape = shape;
     
     grabsMouseColor = color(0, 0, 255);
     avatarColor = color(255, 255, 0);
@@ -44,6 +44,7 @@ class Boid{
         if (animate)
           run(flock);
         render();
+        
       }
       // Behaviour: tapping over a boid will select the node as
       // the eye reference and perform an eye interpolation to it.
@@ -202,6 +203,10 @@ class Boid{
     initializeMeshValues();
     createMeshAndRender();
     setNullUnnecesaryReferences();
+    if (renderMode==1){
+      display();
+    }
+    
     /*
     //draw boid
     beginShape(kind);
@@ -233,7 +238,8 @@ class Boid{
       
         faceVertexMesh = new FaceVertex(faceList, vertexList);        
         if(this.renderMode == 1){
-          faceVertexMesh.renderMesh(this.shape);
+          this.shapeBoid=faceVertexMesh.renderMesh2();
+          
         }
         else{
           faceVertexMesh.renderMesh();
@@ -248,7 +254,7 @@ class Boid{
           vertexVertexMesh.renderMesh("Immediate");
         }
         else{
-          vertexVertexMesh.renderMesh("Retained");          
+          this.shapeBoid=vertexVertexMesh.renderMesh("Retained");          
       }
       vertexVertexMesh = null;  
       break;    
@@ -257,6 +263,9 @@ class Boid{
     
   }
 
+void display(){
+  shape(shapeBoid);
+}
   void setListsToNull(){
     faceList = null;
     vertexList = null;

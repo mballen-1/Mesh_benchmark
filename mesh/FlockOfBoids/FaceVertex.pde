@@ -27,6 +27,29 @@ public class FaceVertex{
         this.vertexList = vertexList;
     }
 
+/*
+      void renderMesh(String renderMode){
+        if(renderMode == "Immediate"){
+            for(Face face : faceList) {
+                face.renderFaceImmediate();
+            }
+           
+        }
+        else{
+            for(Face face : faceList) {
+                face.renderFaceRetained();
+                face.displayShape();
+            }
+        }
+        faceList = null;
+        vertexList = null;
+        //System.gc();
+    }
+
+
+
+*/
+
     void renderMesh(){        
       for(Face face : faceList) {
         face.renderFaceImmediate();
@@ -36,12 +59,15 @@ public class FaceVertex{
         //System.gc();
     }
     
-    void renderMesh(PShape shape){
+    PShape renderMesh2(){
+      PShape shapeFace = createShape();
       for(Face face : faceList) {
-        face.renderFaceRetained(shape);
+        shapeFace=face.renderFaceRetained();
+        //face.displayShape();
       }
       faceList = null;
       vertexList = null;
+      return shapeFace;
     }
 
 }

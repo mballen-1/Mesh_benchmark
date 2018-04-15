@@ -5,7 +5,7 @@ public class Face{
   Vector v1;
   Vector v2;
   Vector v3;
-  //PShape shape = createShape();
+  
 
   public Vector getV1() {
     return v1;
@@ -47,12 +47,20 @@ public class Face{
     //System.out.println(Runtime.getRuntime().totalMemory());
   }
 
-  public void renderFaceRetained(PShape shape){
-    shape.beginShape();
+  public PShape renderFaceRetained(){
+    PShape shape = createShape();
+    shape.beginShape(TRIANGLE_STRIP);
       shape.vertex(v1.x(),v1.y(),v1.z());
       shape.vertex(v2.x(),v2.y(),v2.z());
       shape.vertex(v3.x(),v3.y(),v3.z());
     shape.endShape();
+    return shape;
+    
   }
-
+  
+  /*
+  public void displayShape(){
+  shape(renderFaceRetained());
+  }
+*/
 }
