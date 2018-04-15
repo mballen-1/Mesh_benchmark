@@ -4,24 +4,45 @@ public class VertexVertex{
     public VertexVertex(List<Vector> vertexList) {
         this.vertexList = vertexList;
     }
+    public void renderFace1(){
+      beginShape(TRIANGLE_STRIP);
+                vertex(vertexList.get(0).x(), vertexList.get(0).y(), vertexList.get(0).z());
+                vertex(vertexList.get(1).x(), vertexList.get(1).y(), vertexList.get(1).z());
+                vertex(vertexList.get(2).x(), vertexList.get(2).y(), vertexList.get(2).z());
+      endShape();  
+    }
+    public void renderFace2(){
+      beginShape(TRIANGLE_STRIP);
+                vertex(vertexList.get(0).x(), vertexList.get(0).y(), vertexList.get(0).z());
+                vertex(vertexList.get(1).x(), vertexList.get(1).y(), vertexList.get(1).z());
+                vertex(vertexList.get(2).x(), vertexList.get(2).y(), vertexList.get(2).z());
+      endShape();  
+    }
+    public void renderFace3(){
+      beginShape(TRIANGLE_STRIP);
+                vertex(vertexList.get(0).x(), vertexList.get(0).y(), vertexList.get(0).z());
+                vertex(vertexList.get(1).x(), vertexList.get(1).y(), vertexList.get(1).z());
+                vertex(vertexList.get(2).x(), vertexList.get(2).y(), vertexList.get(2).z());
+      endShape();  
+    }
+    public void renderFace4(){
+      beginShape(TRIANGLE_STRIP);
+                vertex(vertexList.get(0).x(), vertexList.get(0).y(), vertexList.get(0).z());
+                vertex(vertexList.get(1).x(), vertexList.get(1).y(), vertexList.get(1).z());
+                vertex(vertexList.get(2).x(), vertexList.get(2).y(), vertexList.get(2).z());
+      endShape();  
+    }
+
+    public void renderFacesImmediate(){
+      renderFace1();
+      renderFace2();
+      renderFace3();
+      renderFace4();    
+    }
 
     public void renderMesh(String renderMode){
         if(renderMode == "Immediate"){
-            beginShape(TRIANGLE_STRIP);
-                vertex(vertexList.get(0).x(), vertexList.get(0).y(), vertexList.get(0).z());
-                vertex(vertexList.get(1).x(), vertexList.get(1).y(), vertexList.get(1).z());
-                vertex(vertexList.get(2).x(), vertexList.get(2).y(), vertexList.get(2).z());
-                vertex(vertexList.get(0).x(), vertexList.get(0).y(), vertexList.get(0).z());
-                vertex(vertexList.get(1).x(), vertexList.get(1).y(), vertexList.get(1).z());
-                vertex(vertexList.get(3).x(), vertexList.get(3).y(), vertexList.get(3).z());
-                vertex(vertexList.get(0).x(), vertexList.get(0).y(), vertexList.get(0).z());
-                vertex(vertexList.get(3).x(), vertexList.get(3).y(), vertexList.get(3).z());
-                vertex(vertexList.get(2).x(), vertexList.get(2).y(), vertexList.get(2).z());
-                vertex(vertexList.get(3).x(), vertexList.get(3).y(), vertexList.get(3).z());
-                vertex(vertexList.get(1).x(), vertexList.get(1).y(), vertexList.get(1).z());
-                vertex(vertexList.get(2).x(), vertexList.get(2).y(), vertexList.get(2).z());
-                //System.out.println("immediate vertex vertex");
-            endShape();
+           renderFacesImmediate();
         }
         else {
             if (renderMode == "Retained") {
@@ -29,12 +50,18 @@ public class VertexVertex{
                     vertex(vertexList.get(0).x(), vertexList.get(0).y(), vertexList.get(0).z());
                     vertex(vertexList.get(1).x(), vertexList.get(1).y(), vertexList.get(1).z());
                     vertex(vertexList.get(2).x(), vertexList.get(2).y(), vertexList.get(2).z());
+                endShape();
+                beginShape(TRIANGLE_STRIP);
                     vertex(vertexList.get(0).x(), vertexList.get(0).y(), vertexList.get(0).z());
                     vertex(vertexList.get(1).x(), vertexList.get(1).y(), vertexList.get(1).z());
                     vertex(vertexList.get(3).x(), vertexList.get(3).y(), vertexList.get(3).z());
+               endShape(); 
+               beginShape(TRIANGLE_STRIP);
                     vertex(vertexList.get(0).x(), vertexList.get(0).y(), vertexList.get(0).z());
                     vertex(vertexList.get(3).x(), vertexList.get(3).y(), vertexList.get(3).z());
                     vertex(vertexList.get(2).x(), vertexList.get(2).y(), vertexList.get(2).z());
+               endShape();
+               beginShape(TRIANGLE_STRIP);
                     vertex(vertexList.get(3).x(), vertexList.get(3).y(), vertexList.get(3).z());
                     vertex(vertexList.get(1).x(), vertexList.get(1).y(), vertexList.get(1).z());
                     vertex(vertexList.get(2).x(), vertexList.get(2).y(), vertexList.get(2).z());
