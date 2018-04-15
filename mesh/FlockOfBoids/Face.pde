@@ -47,15 +47,15 @@ public class Face{
     //System.out.println(Runtime.getRuntime().totalMemory());
   }
 
-  public void renderFaceRetained(){
-    /*shape = createShape();
+  public void renderFaceRetained(PShape shape){
+    /*shape = createShape();*/
     shape.beginShape();
       shape.vertex(v1.x(),v1.y(),v1.z());
       shape.vertex(v2.x(),v2.y(),v2.z());
       shape.vertex(v3.x(),v3.y(),v3.z());
     shape.endShape();
-  */
-    System.out.println("retained face");
+  
+    //System.out.println("retained face");
   }
 
 }

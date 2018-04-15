@@ -232,11 +232,11 @@ class Boid{
       case 0://Face vertex
       
         faceVertexMesh = new FaceVertex(faceList, vertexList);        
-        if(this.renderMode == 0){
-          faceVertexMesh.renderMesh("Immediate");
+        if(this.renderMode == 1){
+          faceVertexMesh.renderMesh(this.shape);
         }
         else{
-          faceVertexMesh.renderMesh("Retained");
+          faceVertexMesh.renderMesh();
         }
         faceVertexMesh= null;
       break;

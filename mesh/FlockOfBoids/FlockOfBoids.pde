@@ -73,7 +73,9 @@ void setup() {
   shape = createShape();
   //inputRenderMode();
   //inputRepresentationMode();
-  createFlock(vertexVertexRepresentation);            
+  shape.beginShape();
+  createFlock(vertexVertexRepresentation);
+  shape.endShape();
   System.gc(); 
 }
 
@@ -84,6 +86,7 @@ void draw() {
   walls();
   // Calls Node.visit() on all scene nodes.
   scene.traverse();
+  shape(shape);
 }
 
 void walls() {
@@ -153,6 +156,7 @@ void createFlock(boolean vertexVertexRepresentation){
     }
     else{//retained
         for (int i = 0; i < initBoidNum; i++){
+          
             flock.add(new Boid(new Vector(flockWidth / 2, flockHeight / 2, flockDepth / 2), int(vertexVertexRepresentation), 1, shape));
         }  
       }

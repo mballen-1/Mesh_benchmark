@@ -27,20 +27,21 @@ public class FaceVertex{
         this.vertexList = vertexList;
     }
 
-    void renderMesh(String renderMode){
-        if(renderMode == "Immediate"){
-            for(Face face : faceList) {
-                face.renderFaceImmediate();
-            }
-           
-        }
-        else{
-            for(Face face : faceList) {
-                face.renderFaceRetained();
-            }
-        }
+    void renderMesh(){        
+      for(Face face : faceList) {
+        face.renderFaceImmediate();
+       }       
         faceList = null;
         vertexList = null;
         //System.gc();
     }
+    
+    void renderMesh(PShape shape){
+      for(Face face : faceList) {
+        face.renderFaceRetained(shape);
+      }
+      faceList = null;
+      vertexList = null;
+    }
+
 }
