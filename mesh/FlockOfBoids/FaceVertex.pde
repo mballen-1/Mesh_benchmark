@@ -27,8 +27,8 @@ public class FaceVertex{
         this.vertexList = vertexList;
     }
 
-    void renderMesh(String mode){
-        if(mode == "Immediate"){
+    void renderMesh(String renderMode){
+        if(renderMode == "Immediate"){
             for(Face face : faceList) {
                 face.renderFaceImmediate();
             }

@@ -34,20 +34,18 @@ int flockHeight = 720;
 int flockDepth = 600;
 boolean avoidWalls = true;
 
-int representation = 0;
+boolean faceVertexRepresentation = true;
 //0 face-vertex
-//1 Face - vertex
+//1 vertex-vertex
+
 int renderMode = 0;
-// 0 retained
-// 1 immediate
+// 0 Immediate
+// 1 Retained
 
-List<Face> faceList = new ArrayList<Face>(); //list face-vertex face
-List<Vector> vertexList = new ArrayList<Vector>(); //list face-vertex vertices
-Face f1,f2,f3,f4; // tetrahedron faces
 FaceVertex faceVertexMesh;
-Vector a1, a2, a3, a4;// tetrahedron vertices
 
-VertexVertex vertexVertexMesh;
+
+//VertexVertex vertexVertexMesh;//todo
 
 // visual modes
 // 0. Faces and edges
@@ -60,7 +58,7 @@ int initBoidNum = 900; // amount of boids to start the program with
 ArrayList<Boid> flock;
 Node avatar;
 boolean animate = true;
-PShape shape;
+
 
 void setup() {
   size(1000, 800, P3D);
@@ -75,13 +73,14 @@ void setup() {
   scene.fitBall();
   // create and fill the list of boids
   flock = new ArrayList();
-  if(representation == 0){
+  
+  if(faceVertexRepresentation){
     for (int i = 0; i < initBoidNum; i++)
-      flock.add(new Boid(new Vector(flockWidth / 2, flockHeight / 2, flockDepth / 2)));
+      flock.add(new Boid(new Vector(flockWidth / 2, flockHeight / 2, flockDepth / 2), 0, 0));
   }
   else{
     for (int i = 0; i < initBoidNum; i++){
-        flock.add(new Boid(new Vector(flockWidth/2,flockHeight/2,flockDepth/2)));
+        //flock.add(new Boid(new Vector(flockWidth/2,flockHeight/2,flockDepth/2)));
     }
   }
   
@@ -137,8 +136,8 @@ void keyPressed() {
   case 'm':
     mode = mode < 3 ? mode+1 : 0;
     break;
-  case '1':
-    representation = 1;
+  case 'r':
+    faceVertexRepresentation = !faceVertexRepresentation;
     break;    
   case ' ':
     if (scene.eye().reference() != null) {

@@ -27,8 +27,9 @@ Complete la tabla:
 
 | Integrante | github nick |
 |------------|-------------|
-| Miguel Angel Ballen | mballeng91             |
-
+| Miguel Angel Ballen | mballeng91|
+|Tania Hurtado Pinto| TaniaHurtado|
+|Ivan Darío Rojas| idrojasf|
 ## Entrega
 
 * Modo de entrega: Haga [fork](https://help.github.com/articles/fork-a-repo/) de la plantilla e informe la url del repo en la hoja *urls* de la plantilla compartida (una sola vez por grupo). Plazo: 15/4/18 a las 24h.

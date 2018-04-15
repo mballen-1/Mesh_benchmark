@@ -1,4 +1,4 @@
-class Boid extends FlockOfBoids{
+class Boid{
   Node node;
   int grabsMouseColor;
   int avatarColor;
@@ -11,13 +11,27 @@ class Boid extends FlockOfBoids{
   float sc = 4; // scale factor for the render of the boid
   float flap = 0;
   float t = 0;
+  
+  int representation, renderMode;
+  
+  List<Face> faceList = new ArrayList<Face>(); //list face-vertex face
+  List<Vector> vertexList = new ArrayList<Vector>(); //list face-vertex vertices
+  
+  Face f1,f2,f3,f4; // tetrahedron faces
+  Vector a1, a2, a3, a4;// tetrahedron vertices
 
-  Boid(Vector inPos) {
+  Boid(Vector inPos, int representation, int renderMode) {
+    
+    this.representation = representation;
+    this.renderMode = renderMode;
+    
     grabsMouseColor = color(0, 0, 255);
     avatarColor = color(255, 255, 0);
     position = new Vector();
     position.set(inPos);
     node = new Node(scene) {
+      
+
       // Note that within visit() geometry is defined at the
       // node local coordinate system.
       @Override
@@ -26,7 +40,6 @@ class Boid extends FlockOfBoids{
           run(flock);
         render();
       }
-
       // Behaviour: tapping over a boid will select the node as
       // the eye reference and perform an eye interpolation to it.
       @Override
@@ -181,7 +194,8 @@ class Boid extends FlockOfBoids{
       fill(avatarColor);
     }
 
-    readRepresentationAnRenderMode();
+    initializeMeshValues();
+    createMeshAndRender();
     /*
     //draw boid
     beginShape(kind);
@@ -206,19 +220,29 @@ class Boid extends FlockOfBoids{
     */
   }
 
-  public void readRepresentationAnRenderMode(){
-    if( this.representation == "Face-Vertex"){
-      //draw immediate - face-vertex
-      initializeMeshValues();
-      faceVertexMesh = new FaceVertex(faceList, vertexList);
-      if(this.renderMode == "Immediate")
-      {
-        faceVertexMesh.renderMesh("Immediate");
-      }
-      else{
-        faceVertexMesh.renderMesh("Retained");
-      }
-    }
+  public void createMeshAndRender(){
+    switch(this.representation){
+      case 0://Face vertex
+        faceVertexMesh = new FaceVertex(faceList, vertexList);
+        if(this.renderMode == 0){
+          faceVertexMesh.renderMesh("Immediate");
+        }
+        else{
+          faceVertexMesh.renderMesh("Retained");
+        }
+      break;
+      case 1: //vertex-vertex
+        //vertexVertexMesh = new VertexVertex(faceList, vertexList);
+        if(this.renderMode == 0){
+          //faceVertexMesh.renderMesh("Immediate");
+        }
+        else{
+          //faceVertexMesh.renderMesh("Retained");
+        }
+      break; 
+      
+      
+    } 
   }
 
 
@@ -245,9 +269,9 @@ class Boid extends FlockOfBoids{
   }
 
    void addVertexesToList(){
-      vertexList.add(a1);
-      vertexList.add(a2);
-      vertexList.add(a3);
-      vertexList.add(a4);
+      this.vertexList.add(a1);
+      this.vertexList.add(a2);
+      this.vertexList.add(a3);
+      this.vertexList.add(a4);
    }
 }
