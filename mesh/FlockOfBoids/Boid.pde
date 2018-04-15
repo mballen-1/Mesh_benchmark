@@ -203,7 +203,7 @@ class Boid{
     initializeMeshValues();
     createMeshAndRender();
     setNullUnnecesaryReferences();
-    if (renderMode==1){
+    if (renderMode == 1){
       display();
     }
     
@@ -238,7 +238,7 @@ class Boid{
       
         faceVertexMesh = new FaceVertex(faceList, vertexList);        
         if(this.renderMode == 1){
-          this.shapeBoid=faceVertexMesh.renderMeshRetained();
+          this.shapeBoid = faceVertexMesh.renderMeshRetained();
           
         }
         else{

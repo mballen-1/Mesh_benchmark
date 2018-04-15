@@ -33,16 +33,17 @@ public class FaceVertex{
        }       
         faceList = null;
         vertexList = null;
-        //System.gc();
     }
     
     PShape renderMeshRetained(){
       PShape shapeFace = createShape();
+      shapeFace.beginShape();
       for(Face face : faceList) {
-        shapeFace=face.renderFaceRetained();
+        shapeFace.vertex(face.v1.x(), face.v1.y(), face.v1.z());
+        shapeFace.vertex(face.v2.x(), face.v2.y(), face.v2.z());
+        shapeFace.vertex(face.v3.x(), face.v3.y(), face.v3.z());
       }
-      //faceList = null;
-      //vertexList = null;
+      shapeFace.endShape();
       return shapeFace;
     }
 
