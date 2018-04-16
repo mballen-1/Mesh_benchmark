@@ -88,6 +88,7 @@ Complete la tabla:
     mallas poligonales. En particular un numero variable de tetrahedros que 
     conforman una manada que posee un comportamiento de un agente con vida artificial
     dado de forma inicial.
+    ![alt-text](malla.PNG)
     
    Se procedió a la declaración de dos estructuras de datos para las representaciones
     de las mallas poligonales. En particular se seleccionaron las 
@@ -105,15 +106,8 @@ Complete la tabla:
     información perteneciente a los vertices que conforman la malla e ir
     renderizando las caras mediante el uso de las funciones beginShape(),
     vertex(a1,a2,a3) y endShape().
+    ![alt-text](immediate.PNG)
         
-    public void renderFaceImmediate(){
-        beginShape(TRIANGLE_STRIP);
-            vertex(v1.x(),v1.y(),v1.z());
-            vertex(v2.x(),v2.y(),v2.z());
-            vertex(v3.x(),v3.y(),v3.z());
-        endShape();
-     }    
-    
    Estos métodos forman parte del conjunto de instrucciones de Processing,
     que pueden emplearse para formar cualquier tipo de figura geométrica
     en 2 y 3 dimensiones.
@@ -122,18 +116,8 @@ Complete la tabla:
     un objeto de la clase PShape también de processing para que en la memoria
     se almacene la información de la forma a la cual se quiere representar
     y renderizar en el sketch.
-     
-     PShape renderMeshRetained(){
-           PShape shapeFace = createShape();
-           shapeFace.beginShape();
-           for(Face face : faceList) {
-             shapeFace.vertex(face.v1.x(), face.v1.y(), face.v1.z());
-             shapeFace.vertex(face.v2.x(), face.v2.y(), face.v2.z());
-             shapeFace.vertex(face.v3.x(), face.v3.y(), face.v3.z());
-           }
-           shapeFace.endShape();
-           return shapeFace;
-         }
+    ![alt-text](retained.PNG)
+  
 ***
 ### Resultados y análisis
    Para evaluar el comportamiento de la cpu y de la ejecución del
