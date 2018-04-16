@@ -88,8 +88,9 @@ Complete la tabla:
     mallas poligonales. En particular un numero variable de tetrahedros que 
     conforman una manada que posee un comportamiento de un agente con vida artificial
     dado de forma inicial.
+    <p align="center">
     ![alt-text](img/malla.PNG)
-    
+    </p>
    Se procedió a la declaración de dos estructuras de datos para las representaciones
     de las mallas poligonales. En particular se seleccionaron las 
     representaciones Face-vertex   y Vertex-Vertex.
