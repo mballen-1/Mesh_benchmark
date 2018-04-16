@@ -132,25 +132,33 @@ Complete la tabla:
    con memoria RAM de 6GB y 50 boids en el flock.
       
    * Representación vertex-vertex modo inmediato
+   
      ![alt-text](img/vvimmediate.PNG)
+     
      Se evidencia un comportamiento uniforme del valor FPS
      a medida que avanza el tiempo de ejecución. Alcanza un
      maximo al haberse trascurrido 5 segundos pero luego perma-
      nece poco disperso.
    
    * Representación vertex-vertex modo retenido
+   
      ![alt-text](img/vvretained.PNG)
+     
      El comportamiento de la variable FPS es algo inestable
      en comparación al modo inmediato. Es posible alcanzar picos
      en tiempos más adelantados en comparación al modo inmediato.
      
    * Representación face-vertex modo inmediato
+   
      ![alt-text](img/fvimmediate.PNG)
+     
      Se tiene un comportamiento decreciente para este tipo de 
      representación, lo cual indica que no suele emplearse mucho
      si se busca un rendimiento óptimo en el proceso de renderizado.
    * Representación face-vertex modo retenido
+   
      ![alt-text](img/fvretained.PNG) 
+     
      De los escenarios estudiados es por mucho el que menos ventajas
      ofrece. Además de guardar información sobre la malla en varias
      estructuras de datos no alcanza un índice de FPS alto en comparación
