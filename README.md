@@ -107,9 +107,9 @@ Complete la tabla:
     información perteneciente a los vertices que conforman la malla e ir
     renderizando las caras mediante el uso de las funciones beginShape(),
     vertex(a1,a2,a3) y endShape().
-    
+    <p align="center">
    ![alt-text](img/immediate.PNG)
-        
+     </p>
    Estos métodos forman parte del conjunto de instrucciones de Processing,
     que pueden emplearse para formar cualquier tipo de figura geométrica
     en 2 y 3 dimensiones.
@@ -117,9 +117,10 @@ Complete la tabla:
    Para el modo retenido a nivel de implementación, es necesario instanciar
     un objeto de la clase PShape también de processing para que en la memoria
     se almacene la información de la forma a la cual se quiere representar
-    y renderizar en el sketch.
-   
-   ![alt-text](img/retained.PNG)
+    y renderizar en el sketch.   
+    <p align="center">
+    ![alt-text](img/retained.PNG)
+    </p>
   
 
 ### Resultados
@@ -133,8 +134,9 @@ Complete la tabla:
    con memoria RAM de 6GB y 50 boids en el flock.
       
    * Representación vertex-vertex modo inmediato
-   
+         <p align="center">
      ![alt-text](img/vvimmediate.PNG)
+     </p>
      
      Se evidencia un comportamiento uniforme del valor FPS
      a medida que avanza el tiempo de ejecución. Alcanza un
@@ -142,23 +144,24 @@ Complete la tabla:
      nece poco disperso.
    
    * Representación vertex-vertex modo retenido
-   
+         <p align="center">
      ![alt-text](img/vvretained.PNG)
-     
+     </p>
      El comportamiento de la variable FPS es algo inestable
      en comparación al modo inmediato. Es posible alcanzar picos
      en tiempos más adelantados en comparación al modo inmediato.
      
    * Representación face-vertex modo inmediato
-   
+         <p align="center">
      ![alt-text](img/fvimmediate.PNG)
-     
+     </p>
      Se tiene un comportamiento decreciente para este tipo de 
      representación, lo cual indica que no suele emplearse mucho
      si se busca un rendimiento óptimo en el proceso de renderizado.
    * Representación face-vertex modo retenido
-   
+          <p align="center">
      ![alt-text](img/fvretained.PNG) 
+     </p>
      
      De los escenarios estudiados es por mucho el que menos ventajas
      ofrece. Además de guardar información sobre la malla en varias
