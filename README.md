@@ -106,7 +106,8 @@ Complete la tabla:
     información perteneciente a los vertices que conforman la malla e ir
     renderizando las caras mediante el uso de las funciones beginShape(),
     vertex(a1,a2,a3) y endShape().
-    ![alt-text](immediate.PNG)
+    
+   ![alt-text](immediate.PNG)
         
    Estos métodos forman parte del conjunto de instrucciones de Processing,
     que pueden emplearse para formar cualquier tipo de figura geométrica
@@ -116,7 +117,8 @@ Complete la tabla:
     un objeto de la clase PShape también de processing para que en la memoria
     se almacene la información de la forma a la cual se quiere representar
     y renderizar en el sketch.
-    ![alt-text](retained.PNG)
+   
+   ![alt-text](retained.PNG)
   
 ***
 ### Resultados y análisis
