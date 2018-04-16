@@ -52,7 +52,7 @@ Complete la tabla:
   3. Resultados (benchmark).
   4. Conclusiones.
 
-***
+
 ## Resultados obtenidos
 
 ### Introducción
@@ -70,7 +70,7 @@ Complete la tabla:
    Por otra parte el modo inmediato permite renderizar un elemento 
     gráfico sin referenciar o almacenar su contenido en la memoria RAM
     del dispositivo que ejecuta el procedimiento de renderizado.
-***
+
 ###  Mallas poligonales - objetivos
     
    En el procedimiento realizado a nivel de hardware para el presente taller,
@@ -81,14 +81,14 @@ Complete la tabla:
    >Una malla poligonal es una abstracción de la información relacionada
     con un sólido que pueda representarse por una cantidad determinada
     de caras o planos con forma de algún polígono regular.
-***    
+    
 ### Procedimiento
     
    En el presente caso de estudio se renderizó un conjunto de 
     mallas poligonales. En particular un numero variable de tetrahedros que 
     conforman una manada que posee un comportamiento de un agente con vida artificial
     dado de forma inicial.
-    ![alt-text](malla.PNG)
+    ![alt-text](img/malla.PNG)
     
    Se procedió a la declaración de dos estructuras de datos para las representaciones
     de las mallas poligonales. En particular se seleccionaron las 
@@ -107,7 +107,7 @@ Complete la tabla:
     renderizando las caras mediante el uso de las funciones beginShape(),
     vertex(a1,a2,a3) y endShape().
     
-   ![alt-text](immediate.PNG)
+   ![alt-text](img/immediate.PNG)
         
    Estos métodos forman parte del conjunto de instrucciones de Processing,
     que pueden emplearse para formar cualquier tipo de figura geométrica
@@ -118,21 +118,74 @@ Complete la tabla:
     se almacene la información de la forma a la cual se quiere representar
     y renderizar en el sketch.
    
-   ![alt-text](retained.PNG)
+   ![alt-text](img/retained.PNG)
   
-***
-### Resultados y análisis
+
+### Resultados
    Para evaluar el comportamiento de la cpu y de la ejecución del
-    programa, se seleccionaron 4 escenarios de prueba:
+    programa, se seleccionaron 4 escenarios de prueba para la 
+    representación de la malla poligonal en particular del tetra-
+    hedro:
    
+   #### Datos de la máquina 
+   La ejecución se llevo a cabo en un CPU Intel Core i5 a 2.5GHz
+   con memoria RAM de 6GB y 50 boids en el flock.
+      
    * Representación vertex-vertex modo inmediato
+     ![alt-text](img/vvimmediate.PNG)
+     Se evidencia un comportamiento uniforme del valor FPS
+     a medida que avanza el tiempo de ejecución. Alcanza un
+     maximo al haberse trascurrido 5 segundos pero luego perma-
+     nece poco disperso.
+   
    * Representación vertex-vertex modo retenido
+     ![alt-text](img/vvretained.PNG)
+     El comportamiento de la variable FPS es algo inestable
+     en comparación al modo inmediato. Es posible alcanzar picos
+     en tiempos más adelantados en comparación al modo inmediato.
+     
    * Representación face-vertex modo inmediato
-   * Representación face-vertex modo retenido 
+     ![alt-text](img/fvimmediate.PNG)
+     Se tiene un comportamiento decreciente para este tipo de 
+     representación, lo cual indica que no suele emplearse mucho
+     si se busca un rendimiento óptimo en el proceso de renderizado.
+   * Representación face-vertex modo retenido
+     ![alt-text](img/fvretained.PNG) 
+     De los escenarios estudiados es por mucho el que menos ventajas
+     ofrece. Además de guardar información sobre la malla en varias
+     estructuras de datos no alcanza un índice de FPS alto en comparación
+     a los demás escenarios.
+     
+   ### Nota sobre el procedimiento
+   Se tomaron 15 datos de FPS para cada una de las representaciones
+   con durante un tiempo de 15 +- 1 segundo.   
+   
+   ### Conclusiones
     
-
-
-### Conclusiones
+   #### Immediate vs Retained  
+   Desde el punto de vista computacional la representación
+   vertex-vertex es óptima. En cuanto espacio en memoria durante
+   la ejecución es menor en comparación a la representación 
+   Face-Vertex lo cual puede resultar conveniente al 
+   usar dispositivos con baja capacidad de almacenamiento, como
+   por ejemplo algunos dispositivos móviles.
+   
+   Por otra parte el modo retenido presenta un comportamiento
+   menos disperso sobre el numero de FPS a medida que avanza 
+   la ejecución. 
+   
+   ### Configuración de Hardware
+   Teniendo en cuenta el tamaño de la malla poligonal
+         y el número de boids, es muy probable que convenga trabajar
+         el modo retenido si el numero de boids es alto y se cuenta
+         con espacio en memoria suficiente.
+         
+   Para el caso de estudio, el modo de renderizado inmediato
+         resulta ser mejor pues dado el numero de boids (50-100) 
+         resulta conveniente descartar los datos de la malla
+         luego esta haya sido renderizada.
+   
+   
 
 
 
