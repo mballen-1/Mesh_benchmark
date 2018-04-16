@@ -238,8 +238,7 @@ class Boid{
       
         faceVertexMesh = new FaceVertex(faceList, vertexList);        
         if(this.renderMode == 1){
-          this.shapeBoid = faceVertexMesh.renderMeshRetained();
-          
+          this.shapeBoid = faceVertexMesh.renderMeshRetained();          
         }
         else{
           faceVertexMesh.renderMeshImmediate();
@@ -284,7 +283,6 @@ void display(){
      a4 = null;
    }
   void setNullUnnecesaryReferences(){
-    //setListsToNull();
     setFacesToNull();
     setVertexToNull();
   }

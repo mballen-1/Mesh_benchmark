@@ -42,6 +42,70 @@ Complete la tabla:
 | Miguel Angel Ballen | mballeng91|
 |Tania Hurtado Pinto| TaniaHurtado|
 |Ivan Darío Rojas| idrojasf|
+
+## Resultados obtenidos
+
+### Introducción
+    
+    En el proceso de renderizado de un elemento gráfico se cuenta con dos opciones 
+    dadas por Java y Processing librería de contenido gráfico para tal fin.
+    Estas dos opciones son el modo retenido y el modo inmediato.
+    
+    El modo retenido de rendering permite almacenar el contenido de un
+    elemento perteneciente a alguna escena en Processing en la memoria
+    del dispositivo antes de ser mostrado en la pantalla. Esto puede ser
+    útil en determinados casos en los que el dispositivo cuenta con
+    cierta limitación de procesamiento y se apoya en el uso de la memoria RAM.
+    
+    Por otra parte el modo inmediato permite renderizar un elemento 
+    gráfico sin referenciar o almacenar su contenido en la memoria RAM
+    del dispositivo que ejecuta el procedimiento de renderizado.
+
+###  Mallas poligonales - objetivos
+    
+    En el procedimiento realizado a nivel de hardware para el presente taller,
+    se busca evaluar el comportamiento a nivel de hardware cuando se 
+    renderiza una malla poligonal en modo inmediato y en modo retenido
+    con diferentes configuraciones.
+    
+    Una malla poligonal es una abstracción de la información relacionada
+    con un sólido que pueda representarse por una cantidad determinada
+    de caras o planos con forma de algún polígono regular.
+### Procedimiento
+    
+    En el presente caso de estudio se renderizó un conjunto de 
+    mallas poligonales. En particular un numero variable de tetrahedros que 
+    conforman una manada que posee un comportamiento de un agente con vida artificial
+    dado de forma inicial.
+    
+    Se procedió a la declaración de dos estructuras de datos para las representaciones
+    de las mallas poligonales. En particular se seleccionaron las 
+    representaciones Face-vertex   y Vertex-Vertex.
+    
+    En la representación Face-Vertex se tienen dos listas. Una que contiene
+    la información de cada una de las caras que conforman la malla poligonal
+    y otra con los vertices que conforman las caras mencionadas anteriormente.
+    A partir de allí es suficiente con recorrer los elementos contenidos
+    dentro de la lista de caras para renderizarlas una a una y así 
+    formar en el sketch el sólido esperado.
+    
+    En cuanto a la representación Vertex-Vertex, se cuenta con una única
+    lista que debe recorrerse en un orden determinado para extraer la 
+    información perteneciente a los vertices que conforman la malla e ir
+    renderizando las caras mediante el uso de las funciones beginShape(),
+    vertex(a1,a2,a3) y endShape(). 
+    
+    Estos métodos forman parte del conjunto de instrucciones de Processing,
+    que pueden emplearse para formar cualquier tipo de figura geométrica
+    en 2 y 3 dimensiones.
+    
+    Para el modo retenido a nivel de implementación, es necesario instanciar
+    un objeto de la clase PShape también de processing para que en la memoria
+    se almacene la información de la forma a la cual se quiere representar
+    y renderizar en el sketch.
+
+### Resultados y análisis
+
 ## Entrega
 
 * Modo de entrega: Haga [fork](https://help.github.com/articles/fork-a-repo/) de la plantilla e informe la url del repo en la hoja *urls* de la plantilla compartida (una sola vez por grupo). Plazo: 15/4/18 a las 24h.
@@ -50,3 +114,6 @@ Complete la tabla:
   2. Demo.
   3. Resultados (benchmark).
   4. Conclusiones.
+
+
+
