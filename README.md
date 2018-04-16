@@ -120,7 +120,7 @@ Complete la tabla:
     un objeto de la clase PShape también de processing para que en la memoria
     se almacene la información de la forma a la cual se quiere representar
     y renderizar en el sketch.
-    
+     ```java
      PShape renderMeshRetained(){
            PShape shapeFace = createShape();
            shapeFace.beginShape();
@@ -132,6 +132,7 @@ Complete la tabla:
            shapeFace.endShape();
            return shapeFace;
          }
+     ``` 
         
     
 
