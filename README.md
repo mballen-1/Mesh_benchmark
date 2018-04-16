@@ -1,4 +1,4 @@
-# Taller de mallas poligonales
+﻿# Taller de mallas poligonales
 
 ## Propósito
 
@@ -167,6 +167,40 @@ Complete la tabla:
      ofrece. Además de guardar información sobre la malla en varias
      estructuras de datos no alcanza un índice de FPS alto en comparación
      a los demás escenarios.
+
+   #### Datos de la máquina 
+   La segunda ejecución se llevo a cabo en un CPU Intel Core i5 a 2.7GHz
+   con memoria RAM de 8GB y 100 boids en el flock.
+      
+   * Representación vertex-vertex modo inmediato
+         <p align="center">
+     ![alt-text](img/VVI.png)
+     </p>
+     
+     Luego del segundo 5 podemos evidenciar un comportamiento uniforme del valor FPS
+     a medida que avanza el tiempo de ejecución, luego de eso, se mantiene constante.
+   
+   * Representación vertex-vertex modo retenido
+         <p align="center">
+     ![alt-text](img/VVR.png)
+     </p>
+     A comparación del modo inmediato, podemos ver que inicialmente cambia constantemente,
+     sin embargo, podemos evidenciar un comportamiento decreciente de la variable FPS.
+     
+   * Representación face-vertex modo inmediato
+         <p align="center">
+     ![alt-text](img/FVI.png)
+     </p>
+     Inicialmente empieza con un aproximado de 50 FPS, sin embargo, luego de eso se puede
+     evidenciar un comportamiento decreciente.
+     
+   * Representación face-vertex modo retenido
+          <p align="center">
+     ![alt-text](img/FVR.png) 
+     </p>
+     Nuevamente, podemos observar que esta representación no tiene muchas ventajas a comparación
+     de los demas. La variable FPS se mantiene con valores bajos y muestra un comportamiento 
+     decreciente. 
      
    ### Nota sobre el procedimiento
    Se tomaron 15 datos de FPS para cada una de las representaciones
