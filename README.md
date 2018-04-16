@@ -52,6 +52,7 @@ Complete la tabla:
   3. Resultados (benchmark).
   4. Conclusiones.
 
+***
 ## Resultados obtenidos
 
 ### Introducción
@@ -69,7 +70,7 @@ Complete la tabla:
    Por otra parte el modo inmediato permite renderizar un elemento 
     gráfico sin referenciar o almacenar su contenido en la memoria RAM
     del dispositivo que ejecuta el procedimiento de renderizado.
-
+***
 ###  Mallas poligonales - objetivos
     
    En el procedimiento realizado a nivel de hardware para el presente taller,
@@ -77,9 +78,10 @@ Complete la tabla:
     renderiza una malla poligonal en modo inmediato y en modo retenido
     con diferentes configuraciones.
     
-   Una malla poligonal es una abstracción de la información relacionada
+   >Una malla poligonal es una abstracción de la información relacionada
     con un sólido que pueda representarse por una cantidad determinada
     de caras o planos con forma de algún polígono regular.
+***    
 ### Procedimiento
     
    En el presente caso de estudio se renderizó un conjunto de 
@@ -120,7 +122,7 @@ Complete la tabla:
     un objeto de la clase PShape también de processing para que en la memoria
     se almacene la información de la forma a la cual se quiere representar
     y renderizar en el sketch.
-     ```
+     
      PShape renderMeshRetained(){
            PShape shapeFace = createShape();
            shapeFace.beginShape();
@@ -132,11 +134,17 @@ Complete la tabla:
            shapeFace.endShape();
            return shapeFace;
          }
-     ``` 
-        
+***
+### Resultados y análisis
+   Para evaluar el comportamiento de la cpu y de la ejecución del
+    programa, se seleccionaron 4 escenarios de prueba:
+   
+   * Representación vertex-vertex modo inmediato
+   * Representación vertex-vertex modo retenido
+   * Representación face-vertex modo inmediato
+   * Representación face-vertex modo retenido 
     
 
-### Resultados y análisis
 
 ### Conclusiones
 
