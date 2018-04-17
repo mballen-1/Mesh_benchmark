@@ -35,11 +35,11 @@ int flockHeight = 720;
 int flockDepth = 600;
 boolean avoidWalls = true;
 
-boolean vertexVertexRepresentation =  true;
+boolean vertexVertexRepresentation =  false;
 //0 face-vertex
 //1 vertex-vertex
 
-int renderMode = 1;
+int renderMode = 0;
 // 0 Immediate
 // 1 Retained
 

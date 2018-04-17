@@ -4,6 +4,8 @@ public class FaceVertex{
 
     List<Face> faceList;
     List<Vector> vertexList;
+    Map<Vector, Face[]> neighbors;
+    
 
     public List<Face> getFaceList() {
         return faceList;
@@ -21,10 +23,11 @@ public class FaceVertex{
         this.vertexList = vertexList;
     }
 
-    public FaceVertex(List<Face> faceList, List<Vector> vertexList) {
+    public FaceVertex(List<Face> faceList, List<Vector> vertexList, Map<Vector, Face[]> neighbor_faces) {
 
         this.faceList = faceList;
         this.vertexList = vertexList;
+        this.neighbors = neighbor_faces;
     }
 
     void renderMeshImmediate(){        

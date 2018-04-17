@@ -237,8 +237,14 @@ class Boid{
     switch(this.representation){
       
       case 0://Face vertex
-      
-        faceVertexMesh = new FaceVertex(faceList, vertexList);        
+        
+        Map <Vector, Face[]> neighbor_faces = new HashMap<Vector, Face[]>();
+        neighbor_faces.put( vertexList.get(0), new Face[]{f2, f3, f4});
+        neighbor_faces.put( vertexList.get(1), new Face[]{f1, f3, f4});
+        neighbor_faces.put( vertexList.get(2), new Face[]{f1, f2, f4});
+        neighbor_faces.put( vertexList.get(3), new Face[]{f2, f3, f4});            
+        
+        faceVertexMesh = new FaceVertex(faceList, vertexList, neighbor_faces);        
         if(this.renderMode == 1){
           this.shapeBoid = faceVertexMesh.renderMeshRetained();          
         }
