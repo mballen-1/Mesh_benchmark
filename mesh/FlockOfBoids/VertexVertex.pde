@@ -1,55 +1,34 @@
 public class VertexVertex{
     
+    Map<Integer, Integer[]> neighbors;
     List<Vector> vertexList;
     PShape shapeVertex = createShape();
-    
-    public VertexVertex(List<Vector> vertexList) {
+
+    public VertexVertex(List<Vector> vertexList, Map<Integer, Integer[]> neighbors) {
         this.vertexList = vertexList;
-    }
-    public void renderFace1(){
-      beginShape(TRIANGLE_STRIP);
-                vertex(vertexList.get(0).x(), vertexList.get(0).y(), vertexList.get(0).z());
-                vertex(vertexList.get(1).x(), vertexList.get(1).y(), vertexList.get(1).z());
-                vertex(vertexList.get(2).x(), vertexList.get(2).y(), vertexList.get(2).z());
-      endShape();  
-    }
-    public void renderFace2(){
-      beginShape(TRIANGLE_STRIP);
-                vertex(vertexList.get(0).x(), vertexList.get(0).y(), vertexList.get(0).z());
-                vertex(vertexList.get(1).x(), vertexList.get(1).y(), vertexList.get(1).z());
-                vertex(vertexList.get(3).x(), vertexList.get(3).y(), vertexList.get(3).z());
-      endShape();  
-    }
-    public void renderFace3(){
-      beginShape(TRIANGLE_STRIP);
-                vertex(vertexList.get(0).x(), vertexList.get(0).y(), vertexList.get(0).z());
-                vertex(vertexList.get(3).x(), vertexList.get(3).y(), vertexList.get(3).z());
-                vertex(vertexList.get(2).x(), vertexList.get(2).y(), vertexList.get(2).z());
-      endShape();  
-    }
-    public void renderFace4(){
-      beginShape(TRIANGLE_STRIP);
-                vertex(vertexList.get(3).x(), vertexList.get(3).y(), vertexList.get(3).z());
-                vertex(vertexList.get(1).x(), vertexList.get(1).y(), vertexList.get(1).z());
-                vertex(vertexList.get(2).x(), vertexList.get(2).y(), vertexList.get(2).z());
-      endShape();  
+        this.neighbors = neighbors;
     }
 
-    public void renderFacesImmediate(){
-      renderFace1();
-      renderFace2();
-      renderFace3();
-      renderFace4();    
+    void renderMeshImmediate(){
+        for(int current_vertex: neighbors.keySet()){
+            Integer current_neighbors = neighbors.entrySet().iterator().next().getValue();
+            List<Integer> magic = new ArrayList(current_neighbors); 
+            for(int neighbors: current_neighbors){
+                line(vertexList.get(current_vertex).x(), vertexList.get(current_vertex).y(), vertexList.get(current_vertex).z(), vertexList.get(neighbors).x(),vertexList.get(neighbors).y(),vertexList.get(neighbors).z());
+            }
+        }
+
     }
+
 
     public PShape renderMesh(String renderMode){
         if(renderMode == "Immediate"){
-           renderFacesImmediate();
+           renderMeshImmediate();
         }
         else {
             if (renderMode == "Retained") {
               
-                shapeVertex.beginShape(TRIANGLE_STRIP);
+                shapeVertex.beginShape();
                     shapeVertex.vertex(vertexList.get(0).x(), vertexList.get(0).y(), vertexList.get(0).z());
                     shapeVertex.vertex(vertexList.get(1).x(), vertexList.get(1).y(), vertexList.get(1).z());
                     shapeVertex.vertex(vertexList.get(2).x(), vertexList.get(2).y(), vertexList.get(2).z());

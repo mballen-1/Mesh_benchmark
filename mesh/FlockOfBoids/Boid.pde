@@ -1,3 +1,5 @@
+import java.util.Map;
+
 class Boid{
   Node node;
   int grabsMouseColor;
@@ -8,7 +10,7 @@ class Boid{
   float neighborhoodRadius; // radius in which it looks for fellow boids
   float maxSpeed = 4; // maximum magnitude for the velocity vector
   float maxSteerForce = .1f; // maximum magnitude of the steering vector
-  float sc = 4; // scale factor for the render of the boid
+  float sc = 2; // scale factor for the render of the boid
   float flap = 0;
   float t = 0;
   
@@ -248,8 +250,14 @@ class Boid{
       break;
       
       case 1: //vertex-vertex
-      
-        VertexVertex vertexVertexMesh = new VertexVertex(vertexList);
+        Map <Integer, Integer[]> neighbors_list = new HashMap<Integer, Integer[]>();
+        neighbors_list.put( 0, new Integer[]{1, 2, 3});
+        neighbors_list.put( 1, new Integer[]{0, 2, 3});
+        neighbors_list.put( 2, new Integer[]{0, 1, 3});
+        neighbors_list.put( 3, new Integer[]{0, 1, 2});
+
+        VertexVertex vertexVertexMesh = new VertexVertex(vertexList, neighbors_list);
+
         if(this.renderMode == 0){
           vertexVertexMesh.renderMesh("Immediate");
           vertexVertexMesh = null;
