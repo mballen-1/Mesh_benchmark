@@ -88,9 +88,8 @@ Complete la tabla:
     mallas poligonales. En particular un numero variable de tetrahedros que 
     conforman una manada que posee un comportamiento de un agente con vida artificial
     dado de forma inicial.
-    <p align="center">
-    ![alt-text](img/malla.PNG)
-    </p>
+     ![Alt Text](img/animado.gif)
+     
    Se procedió a la declaración de dos estructuras de datos para las representaciones
     de las mallas poligonales. En particular se seleccionaron las 
     representaciones Face-vertex   y Vertex-Vertex.
@@ -201,11 +200,10 @@ Complete la tabla:
      Nuevamente, podemos observar que esta representación no tiene muchas ventajas a comparación
      de los demas. La variable FPS se mantiene con valores bajos y muestra un comportamiento 
      decreciente. 
-     
-     
-     <p align="center">
-    ![alt-text](img/animado.gif)
-    </p>
+    
+    
+   
+ 
    ### Nota sobre el procedimiento
    Se tomaron 15 datos de FPS para cada una de las representaciones
    con durante un tiempo de 15 +- 1 segundo.   
