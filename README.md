@@ -202,6 +202,10 @@ Complete la tabla:
      de los demas. La variable FPS se mantiene con valores bajos y muestra un comportamiento 
      decreciente. 
      
+     
+     <p align="center">
+    ![alt-text](img/animado.gif)
+    </p>
    ### Nota sobre el procedimiento
    Se tomaron 15 datos de FPS para cada una de las representaciones
    con durante un tiempo de 15 +- 1 segundo.   
